@@ -31,13 +31,14 @@ class QuizBrain {
         true),
   ];
 
-  void nextQuestion(){
-    if(_questionNumber < _questions.length-1){
+  void nextQuestion() {
+    if (_questionNumber < _questions.length - 1) {
       _questionNumber++;
-    }else{
+    } else {
       print("Well Done!");
     }
   }
+
   String getQuestionText() {
     return _questions[_questionNumber].questionText;
   }
