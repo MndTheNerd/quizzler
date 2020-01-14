@@ -35,7 +35,7 @@ class QuizBrain {
     if(_questionNumber < _questions.length-1){
       _questionNumber++;
     }else{
-      print("Well Done!")
+      print("Well Done!");
     }
   }
   String getQuestionText() {
