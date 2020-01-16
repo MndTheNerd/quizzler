@@ -46,4 +46,12 @@ class QuizBrain {
   bool getQuestionAnswer() {
     return _questions[_questionNumber].questionAnwser;
   }
+
+  bool isFinished() {
+    if (_questions[_questionNumber] == _questions.last) {
+      return true;
+    } else {
+      return false;
+    }
+  }
 }

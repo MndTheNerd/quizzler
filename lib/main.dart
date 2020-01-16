@@ -38,14 +38,26 @@ class _QuizPageState extends State<QuizPage> {
   //function to check on the score of the user
   bool checkAnswer(bool b) {
     bool correctAnswer = quizBrain.getQuestionAnswer();
-    if (correctAnswer == b) {
-      print('user got it right');
-    } else {
-      print('user got it wrong');
-    }
 
     setState(() {
-      quizBrain.nextQuestion();
+      if (correctAnswer == b) {
+        print('user got it right');
+        scoreKeeper.add(Icon(
+          Icons.check,
+          color: Colors.green,
+        ));
+      } else {
+        print('user got it wrong');
+        scoreKeeper.add(Icon(
+          Icons.close,
+          color: Colors.red,
+        ));
+      }
+      if (quizBrain.isFinished() == false) {
+        quizBrain.nextQuestion();
+      } else {
+        main();
+      }
     });
     return b;
   }
@@ -112,9 +124,11 @@ class _QuizPageState extends State<QuizPage> {
           ),
         ),
         //TODO: Add a Row here as your score keeper
-//        Row(
-//          children: <Widget>[scoreKeeper.first],
-//        ),
+        Wrap(
+          direction: Axis.horizontal,
+          runSpacing: 5,
+          children: scoreKeeper,
+        ),
       ],
     );
   }
