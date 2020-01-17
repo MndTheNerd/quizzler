@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:quizzler/quiz_brain.dart';
+import 'package:rflutter_alert/rflutter_alert.dart';
 
 //creating an object of class QuizBrain to import all the questions
 QuizBrain quizBrain = QuizBrain();
@@ -56,7 +57,14 @@ class _QuizPageState extends State<QuizPage> {
       if (quizBrain.isFinished() == false) {
         quizBrain.nextQuestion();
       } else {
-        main();
+        Alert(
+          context: context,
+          title: 'Finished!',
+          desc: 'You\'ve reached the end of the quiz.',
+        ).show();
+
+        quizBrain.reset();
+        scoreKeeper = [];
       }
     });
     return b;
